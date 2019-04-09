@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.diu.finalproject.dietplan"
+    android:installLocation="preferExternal">
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        tools:replace="android:icon">
+        <activity android:name=".CCalActivity"></activity>
+        <activity android:name=".ProgressActivity" />
+        <activity android:name=".Message" />
+        <activity android:name=".ContactFragments.MessaeActivity" />
+        <activity android:name=".Videos.VideoActivity" />
+        <activity
+            android:name=".SplashActivity"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".SignupActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".LoginActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".DashboardActivity" />
+        <activity android:name=".WorkOut" />
+        <activity android:name=".UserProfile" />
+        <activity android:name=".HealthTips" />
+        <activity android:name=".ContactProfile" />
+        <activity android:name=".Support" />
+        <activity android:name=".HtmlView" />
+        <activity android:name=".ReadTips" />
+
+        <receiver android:name=".AlarmAndNotification.AlertReceiver" />
+    </application>
+
+</manifest>
