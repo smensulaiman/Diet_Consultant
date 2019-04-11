@@ -92,6 +92,7 @@ public class LoginActivity extends AppCompatActivity {
                                                     Ed.commit();
                                                     startActivity(new Intent(LoginActivity.this, UserProfile.class));
                                                     pDialog.dismissWithAnimation();
+                                                    finish();
                                                 }
 
                                                 @Override

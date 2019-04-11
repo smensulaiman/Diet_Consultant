@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HealthTips">
+    tools:context=".SearchFood">
 
     <Toolbar
         android:id="@+id/toolBar"
@@ -19,22 +19,28 @@
         android:layout_margin="2dp"
         >
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Daily Health Tips"
-            android:textColor="@android:color/white"
-            />
-
     </Toolbar>
-    <ListView
-        android:id="@+id/list"
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tabLayout"
+        android:layout_below="@+id/toolBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/toolBar"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         android:background="@drawable/onlyborder"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
+        android:layout_margin="2dp"
+        android:padding="5dp"
         />
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewPager"
+            android:layout_below="@+id/tabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/onlyborder"
+            android:layout_margin="2dp"
+            >
+
+        </android.support.v4.view.ViewPager>
+
 
 </RelativeLayout>

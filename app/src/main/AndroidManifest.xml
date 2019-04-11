@@ -19,7 +19,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:icon">
-        <activity android:name=".CCalActivity"></activity>
+        <activity android:name=".DietTips"></activity>
+        <activity android:name=".SearchFood" />
+        <activity android:name=".CCalActivity" />
         <activity android:name=".ProgressActivity" />
         <activity android:name=".Message" />
         <activity android:name=".ContactFragments.MessaeActivity" />

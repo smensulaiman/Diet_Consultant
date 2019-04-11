@@ -29,7 +29,7 @@ public class UserProfile extends AppCompatActivity {
             toolbarLayout.setTitle(name);
         } else {
 
-            toolbarLayout.setTitle("Diet_Consultant_Admin");
+            toolbarLayout.setTitle("Admin");
         }
 
 
@@ -66,7 +66,7 @@ public class UserProfile extends AppCompatActivity {
         diettips.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(UserProfile.this, HealthTips.class));
+                startActivity(new Intent(UserProfile.this, DietTips.class));
             }
         });
 
@@ -93,7 +93,7 @@ public class UserProfile extends AppCompatActivity {
         ccal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(UserProfile.this, CCalActivity.class));
+                startActivity(new Intent(UserProfile.this, SearchFood.class));
             }
         });
     }

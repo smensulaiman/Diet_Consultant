@@ -15,7 +15,6 @@ import com.diu.finalproject.dietplan.ContactFragments.Tab3;
 public class Support extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
-    private PagerAdapter mSectionsPageAdapter;
     private ViewPager mViewPager;
 
     @Override
@@ -24,20 +23,17 @@ public class Support extends AppCompatActivity {
         setContentView(R.layout.activity_support);
         Log.d(TAG, "onCreate: Starting.");
 
-        mSectionsPageAdapter = new PagerAdapter(getSupportFragmentManager());
-        // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.container);
-        setupViewPager(mViewPager);
-        //mViewPager.setAdapter(mSectionsPageAdapter);
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
-        tabLayout.setupWithViewPager(mViewPager);
-    }
 
-    private void setupViewPager(ViewPager viewPager) {
         PagerAdapter adapter = new PagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new Tab1(), "Consultant");
         adapter.addFragment(new Tab2(), "Chat");
         adapter.addFragment(new Tab3(), "Profile");
-        viewPager.setAdapter(adapter);
+
+        mViewPager.setAdapter(adapter);
+
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+        tabLayout.setupWithViewPager(mViewPager);
     }
+
 }

@@ -44,7 +44,7 @@ public class ListAdapter extends ArrayAdapter<String>{
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder;
         if (convertView == null) {
-            convertView = LayoutInflater.from(mContext).inflate(R.layout.item_list, parent, false);
+            convertView = LayoutInflater.from(mContext).inflate(R.layout.layout_list_view_row_items, parent, false);
             holder = new ViewHolder(convertView);
             convertView.setTag(holder);
         } else {
@@ -61,7 +61,7 @@ public class ListAdapter extends ArrayAdapter<String>{
         TextView text;
 
         public ViewHolder(View view) {
-            text = (TextView)view.findViewById(R.id.text);
+            text = (TextView)view.findViewById(R.id.text_view_item_name);
         }
     }
 }
