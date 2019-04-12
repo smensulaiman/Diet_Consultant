@@ -1,10 +1,14 @@
 package com.diu.finalproject.dietplan;
 
+import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.provider.MediaStore;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import com.diu.finalproject.dietplan.FoodFragments.FoodPagerAdapter;
@@ -51,5 +55,20 @@ public class SearchFood extends AppCompatActivity {
         });
         layout.setupWithViewPager(mViewpager);
 
+    }
+
+    public void openCamera(View view) {
+
+        Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        startActivityForResult(cameraIntent,1);
+
+    }
+
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 1) {
+            Bitmap image = (Bitmap) data.getExtras().get("data");
+            //ImageView imageview = (ImageView) findViewById(R.id.ImageView01); //sets imageview as the bitmap
+            //imageview.setImageBitmap(image);
+        }
     }
 }

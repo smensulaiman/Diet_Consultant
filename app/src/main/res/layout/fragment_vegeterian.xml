@@ -71,7 +71,7 @@
                 android:padding="5dp"
                 >
                 <CheckBox
-                    android:id="@+id/chkVeg"
+                    android:id="@+id/drinks"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
@@ -80,7 +80,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Vegetarian"
+                    android:text="Drinks"
                     android:textColor="@android:color/white"
                     />
             </LinearLayout>
@@ -118,6 +118,7 @@
             android:layout_height="wrap_content"
             android:text="Min"
             android:padding="5dp"
+            android:textAlignment="center"
             />
         <org.adw.library.widgets.discreteseekbar.DiscreteSeekBar
             android:id="@+id/discrete1"
@@ -130,6 +131,7 @@
             android:layout_weight=".25"
             android:layout_height="wrap_content"
             android:padding="5dp"
+            android:textAlignment="center"
             />
 
     </LinearLayout>
@@ -147,6 +149,7 @@
             android:layout_height="wrap_content"
             android:text="Max"
             android:padding="5dp"
+            android:textAlignment="center"
             />
         <org.adw.library.widgets.discreteseekbar.DiscreteSeekBar
             android:id="@+id/discrete2"
@@ -159,8 +162,20 @@
             android:layout_weight=".25"
             android:layout_height="wrap_content"
             android:padding="5dp"
+            android:textAlignment="center"
             />
 
     </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/RecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/onlyborder"
+        android:padding="10dp"
+        android:layout_margin="10dp"
+        >
+
+    </android.support.v7.widget.RecyclerView>
 
 </LinearLayout>

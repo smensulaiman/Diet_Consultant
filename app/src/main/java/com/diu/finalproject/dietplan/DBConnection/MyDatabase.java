@@ -5,9 +5,11 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.diu.finalproject.dietplan.LIstAdapter.ListAdapter;
 import com.diu.finalproject.dietplan.UserModel.TipsModel;
 import com.diu.finalproject.dietplan.UserModel.UserItem;
 import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,7 +22,8 @@ public class MyDatabase extends SQLiteAssetHelper {
     public MyDatabase(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
-    public void forceDatabaseReload(Context context){
+
+    public void forceDatabaseReload(Context context) {
         MyDatabase dbHelper = new MyDatabase(context);
         dbHelper.setForcedUpgradeVersion(DATABASE_VERSION);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
@@ -29,15 +32,15 @@ public class MyDatabase extends SQLiteAssetHelper {
         db = dbHelper.getWritableDatabase();
     }
 
-    private void openDB() throws Exception{
+    private void openDB() throws Exception {
         db = getReadableDatabase();
     }
 
-    public boolean registerUser(String name,String email,String password){
+    public boolean registerUser(String name, String email, String password) {
         boolean condition = false;
-        if(name == null || email == null || password == null){
+        if (name == null || email == null || password == null) {
             return false;
-        }else {
+        } else {
             try {
                 openDB();
             } catch (Exception e) {
@@ -53,33 +56,33 @@ public class MyDatabase extends SQLiteAssetHelper {
 
             if (result == -1) {
 
-                condition =  false;
-            }else {
+                condition = false;
+            } else {
                 condition = true;
             }
         }
         return condition;
     }
 
-    public String validateUser(String email, String password){
+    public String validateUser(String email, String password) {
         String name = null;
-             try{
-                 openDB();
-             }catch (Exception e){
-                 e.printStackTrace();
-             }
+        try {
+            openDB();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
-             String sql = "select name from user";
-             Cursor cr = db.rawQuery(sql,null);
+        String sql = "select name from user";
+        Cursor cr = db.rawQuery(sql, null);
 
-             if(cr.moveToNext() && cr.getCount()>0){
-                 cr.moveToFirst();
-                 while(cr.moveToNext()) {
-                     name = cr.getString(cr.getColumnIndex("name"));
-                 }
-             }else{
-                 name ="invalid";
-             }
+        if (cr.moveToNext() && cr.getCount() > 0) {
+            cr.moveToFirst();
+            while (cr.moveToNext()) {
+                name = cr.getString(cr.getColumnIndex("name"));
+            }
+        } else {
+            name = "invalid";
+        }
 
         return name;
     }
@@ -92,13 +95,13 @@ public class MyDatabase extends SQLiteAssetHelper {
             e.printStackTrace();
         }
         String sql = "select * from tips";
-        Cursor cr = db.rawQuery(sql,null);
+        Cursor cr = db.rawQuery(sql, null);
 
         boolean check = true;
 
-        if(cr != null && cr.getCount()>0){
+        if (cr != null && cr.getCount() > 0) {
             cr.moveToFirst();
-            while (check){
+            while (check) {
                 String name = cr.getString(cr.getColumnIndex("menu"));
                 booklist.add(name);
                 check = cr.moveToNext();
@@ -115,14 +118,14 @@ public class MyDatabase extends SQLiteAssetHelper {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        String sql = "select * from tips where menu = '"+head+"'";
-        Cursor cr = db.rawQuery(sql,null);
+        String sql = "select * from tips where menu = '" + head + "'";
+        Cursor cr = db.rawQuery(sql, null);
 
         boolean check = true;
 
-        if(cr != null && cr.getCount()>0){
+        if (cr != null && cr.getCount() > 0) {
             cr.moveToFirst();
-            while (check){
+            while (check) {
                 String name = cr.getString(cr.getColumnIndex("desc"));
                 return name;
             }
@@ -141,13 +144,13 @@ public class MyDatabase extends SQLiteAssetHelper {
             e.printStackTrace();
         }
         String sql = "select * from cffr";
-        Cursor cr = db.rawQuery(sql,null);
+        Cursor cr = db.rawQuery(sql, null);
 
         boolean check = true;
 
-        if(cr != null && cr.getCount()>0){
+        if (cr != null && cr.getCount() > 0) {
             cr.moveToFirst();
-            while (check){
+            while (check) {
                 String name = cr.getString(cr.getColumnIndex("name"));
                 booklist.add(name);
                 check = cr.moveToNext();
@@ -158,28 +161,58 @@ public class MyDatabase extends SQLiteAssetHelper {
         return booklist;
     }
 
-    public String getDescription(String item){
+    public String getDescription(String item) {
         try {
             openDB();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        String sql = "select desc from cffr where name = '"+item+"'";
-        Cursor cr = db.rawQuery(sql,null);
+        String sql = "select desc from cffr where name = '" + item + "'";
+        Cursor cr = db.rawQuery(sql, null);
 
         boolean check = true;
 
-        if(cr != null && cr.getCount()>0){
+        if (cr != null && cr.getCount() > 0) {
             cr.moveToFirst();
-            while (check){
+            while (check) {
                 String name = cr.getString(cr.getColumnIndex("desc"));
-                if(!name.equals(null))
-                return name;
+                if (!name.equals(null))
+                    return name;
                 check = cr.moveToNext();
             }
         }
         cr.close();
         db.close();
         return "not found";
+    }
+
+    public List<String> getFood(String s) {
+        List<String> names = new ArrayList<>();
+        try {
+
+            openDB();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        Cursor cr = db.rawQuery(s, null);
+        if (cr != null && cr.getCount() > 0) {
+            cr.moveToFirst();
+        }
+
+        boolean FLAG = true;
+
+        while (FLAG) {
+
+            String name = cr.getString(cr.getColumnIndex("name"));
+            names.add(name);
+            FLAG = cr.moveToNext();
+        }
+
+        cr.close();
+        db.close();
+
+        return names;
+
     }
 }

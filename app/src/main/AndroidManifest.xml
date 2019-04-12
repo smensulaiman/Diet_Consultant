@@ -10,6 +10,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.CAMERA"/>
 
     <application
         android:allowBackup="true"
@@ -18,14 +19,15 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        tools:replace="android:icon">
-        <activity android:name=".DietTips"></activity>
+        tools:replace="android:icon"
+        tools:ignore="AllowBackup,GoogleAppIndexingWarning">
+        <activity android:name=".DietTips"/>
         <activity android:name=".SearchFood" />
         <activity android:name=".CCalActivity" />
         <activity android:name=".ProgressActivity" />
         <activity android:name=".Message" />
-        <activity android:name=".ContactFragments.MessaeActivity" />
-        <activity android:name=".Videos.VideoActivity" />
+        <activity android:name=".Videos.VideoActivity"
+            tools:ignore="InnerclassSeparator" />
         <activity
             android:name=".SplashActivity"
             android:screenOrientation="portrait">
@@ -50,7 +52,8 @@
         <activity android:name=".HtmlView" />
         <activity android:name=".ReadTips" />
 
-        <receiver android:name=".AlarmAndNotification.AlertReceiver" />
+        <receiver android:name=".AlarmAndNotification.AlertReceiver"
+            tools:ignore="InnerclassSeparator" />
     </application>
 
 </manifest>

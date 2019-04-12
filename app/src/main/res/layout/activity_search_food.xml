@@ -19,6 +19,38 @@
         android:layout_margin="2dp"
         >
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            >
+            <Button
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentLeft="true"
+                android:background="@drawable/ic_chevron_left_black_24dp"
+                android:layout_marginRight="5dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="Calories Calculator"
+                android:textSize="16sp"
+                android:textColor="#ECE9E9"
+                />
+            <Button
+                android:id="@+id/camera"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/ic_camera_black_24dp"
+                android:layout_marginRight="5dp"
+                android:onClick="openCamera"
+                />
+
+        </RelativeLayout>
+
     </Toolbar>
     <android.support.design.widget.TabLayout
         android:id="@+id/tabLayout"
