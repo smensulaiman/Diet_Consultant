@@ -10,13 +10,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.diu.finalproject.dietplan.ContactProfile;
-import com.diu.finalproject.dietplan.HtmlView;
 import com.diu.finalproject.dietplan.LIstAdapter.CustomListAdapter;
 import com.diu.finalproject.dietplan.R;
 import com.diu.finalproject.dietplan.UserModel.Item;
@@ -26,7 +23,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.sql.DatabaseMetaData;
 import java.util.ArrayList;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
