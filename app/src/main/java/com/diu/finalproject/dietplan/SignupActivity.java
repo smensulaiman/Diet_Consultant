@@ -83,14 +83,21 @@ public class SignupActivity extends AppCompatActivity {
                                     } else {
                                         pDialog.dismissWithAnimation();
                                         new SweetAlertDialog(SignupActivity.this, SweetAlertDialog.ERROR_TYPE)
-                                                .setTitleText("Faild...")
+                                                .setTitleText("Failed...")
                                                 .setContentText("Something went wrong!")
                                                 .show();
+
+                                        Toast.makeText(SignupActivity.this, task.getException().toString(), Toast.LENGTH_SHORT).show();
                                     }
                                 }
                             });
 
                 } catch (Exception e) {
+                    try {
+                        pDialog.dismissWithAnimation();
+                    }catch (Exception ex){
+
+                    }
                     e.printStackTrace();
                 }
             }}

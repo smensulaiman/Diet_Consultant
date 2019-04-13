@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#2D2E30"
+    android:background="@drawable/bs"
     tools:context=".DashboardActivity">
 
     <ScrollView
@@ -43,7 +43,7 @@
                 android:id="@+id/fmeter"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1.5"
+                android:layout_weight="1"
                 app:speed="0"
                 app:speedTextColor="@android:color/white"
                 app:speedTextSize="15dp"
@@ -79,7 +79,7 @@
                 android:id="@+id/imeter"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1.5"
+                android:layout_weight="1"
                 app:speed="0"
                 app:speedTextColor="@android:color/holo_blue_light"
                 app:speedTextSize="15dp"
@@ -114,35 +114,26 @@
                 android:id="@+id/weightmeter"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1.5"
+                android:layout_weight="1"
                 app:speed="0"
                 app:speedTextColor="@android:color/holo_orange_dark"
                 app:speedTextSize="15dp"
                 app:unit="kg"
                 app:unitTextColor="@android:color/white"
                 app:unitTextSize="5dp" />
-        </LinearLayout>
 
-        <com.github.capur16.digitspeedviewlib.DigitSpeedView
-            android:id="@+id/digit_speed_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:speed="0"
-            app:speedTextSize="30dp"
-            app:unit="BMI"
-            app:unitTextSize="8dp" />
+        </LinearLayout>
         <View
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="5dp"
-            android:background="@android:color/white" />
+            android:layout_height="2dp"
+            android:background="@android:color/black"
+            />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:weightSum="4"
+            android:layout_marginTop="5dp"
             >
             <TextView
                 android:id="@+id/feet"
@@ -186,34 +177,26 @@
                 />
         </LinearLayout>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginTop="10dp"
-            android:background="@android:color/white"  />
-
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="10dp"
-            app:cardBackgroundColor="#b0b3b3"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:cardBackgroundColor="#F0F3F3"
+            android:layout_marginTop="5dp"
             app:cardCornerRadius="5dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:orientation="vertical"
-                android:padding="10dp">
+                android:orientation="vertical">
 
                 <com.shinelw.library.ColorArcProgressBar
                     android:id="@+id/bar3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_gravity="center_horizontal"
-                    app:back_color="@android:color/darker_gray"
+                    app:back_color="@android:color/white"
                     app:back_width="2dp"
                     app:front_color1="#00ff00"
                     app:front_color2="#ffff00"
@@ -239,6 +222,8 @@
             android:textAlignment="center"
             android:textColor="@android:color/white"
             android:textSize="20dp"
+            android:background="@drawable/borderfullwhite"
+            android:layout_margin="5dp"
             />
 
         <LinearLayout
@@ -252,7 +237,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
-                app:cardBackgroundColor="#D8DBDB"
+                app:cardBackgroundColor="#FAFCFC"
                 app:cardCornerRadius="5dp">
 
                 <LinearLayout
@@ -272,6 +257,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:textStyle="bold"
                         android:gravity="center"
                         android:text="Underweight"
                         />
@@ -300,7 +286,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
-                app:cardBackgroundColor="#D8DBDB"
+                app:cardBackgroundColor="#FAFCFC"
                 app:cardCornerRadius="5dp">
 
                 <LinearLayout
@@ -348,7 +334,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
-                app:cardBackgroundColor="#D8DBDB"
+                app:cardBackgroundColor="#FAFCFC"
                 app:cardCornerRadius="5dp">
 
                 <LinearLayout
@@ -383,53 +369,6 @@
                         android:layout_height="wrap_content"
                         android:text="Your weight is above"
                         android:textColor="#ed585c"
-                        android:textSize="10dp"
-                        android:padding="5dp"
-                        />
-                </LinearLayout>
-
-            </android.support.v7.widget.CardView>
-            <android.support.v7.widget.CardView
-                android:id="@+id/obese"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:layout_weight="1"
-                app:cardBackgroundColor="#D8DBDB"
-                app:cardCornerRadius="5dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:layout_marginTop="5dp"
-                        android:background="@drawable/round_purple"
-                        android:padding="10dp"
-                        android:src="@drawable/ic_access_time_black_24dp" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="Obese"
-                        android:textStyle="bold" />
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_margin="5dp"
-                        android:background="@color/black_overlay" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Your weight is on the risk"
-                        android:textColor="@color/black_overlay"
                         android:textSize="10dp"
                         android:padding="5dp"
                         />

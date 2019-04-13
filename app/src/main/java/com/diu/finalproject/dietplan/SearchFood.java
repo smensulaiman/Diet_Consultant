@@ -2,6 +2,7 @@ package com.diu.finalproject.dietplan;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -16,6 +17,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.diu.finalproject.dietplan.FoodFragments.FoodPagerAdapter;
@@ -35,6 +37,7 @@ public class SearchFood extends AppCompatActivity {
 
     private ViewPager mViewpager;
     String filePath;
+    Dialog dialog;
 
     private static final int PICK_PHOTO = 1958;
     private static final int REQUEST_EXTERNAL_STORAGE = 1;
@@ -51,19 +54,19 @@ public class SearchFood extends AppCompatActivity {
 
         verifyStoragePermissions(this);
         FoodPagerAdapter adapter = new FoodPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new Vegeterian(),"veg");
-        adapter.addFragment(new NonVeg(),"non-veg");
+        adapter.addFragment(new Vegeterian(), "veg");
+        adapter.addFragment(new NonVeg(), "non-veg");
 
         mViewpager.setAdapter(adapter);
 
-        final TabLayout layout = (TabLayout)findViewById(R.id.tabLayout);
+        final TabLayout layout = (TabLayout) findViewById(R.id.tabLayout);
         layout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                if(tab.getPosition()==0){
-                    layout.setTabTextColors(Color.BLACK,Color.parseColor("#008577"));
-                }else if(tab.getPosition()==1){
-                    layout.setTabTextColors(Color.BLACK,Color.parseColor("#ed5a5f"));
+                if (tab.getPosition() == 0) {
+                    layout.setTabTextColors(Color.BLACK, Color.parseColor("#008577"));
+                } else if (tab.getPosition() == 1) {
+                    layout.setTabTextColors(Color.BLACK, Color.parseColor("#ed5a5f"));
                 }
             }
 
@@ -99,21 +102,25 @@ public class SearchFood extends AppCompatActivity {
             Uri tempUri = getImageUri(this.getApplicationContext(), imageBitmap);
             filePath = getPath(tempUri);
             NetworkCall.fileUpload(filePath, new ImageSenderInfo("obj", 22));
-           // imageView.setImageBitmap(imageBitmap);
+            // imageView.setImageBitmap(imageBitmap);
+
+            dialog = new Dialog(getApplicationContext());
+
+            dialog.setContentView(R.layout.image_preview);
+
+            ImageView view = dialog.findViewById(R.id.image_view);
+
+            view.setImageBitmap(imageBitmap);
+
+            dialog.show();
+
         }
 
-//        if (resultCode == RESULT_OK && requestCode == 1) {
-//            Uri imageUri = data.getData();
-//            filePath = getPath(imageUri);
-//            //imageView.setImageURI(imageUri);
-//            //uploadButton.setVisibility(View.VISIBLE);
-//            NetworkCall.fileUpload(filePath, new ImageSenderInfo("obj", 22));
-//        }
     }
 
 
     private String getPath(Uri uri) {
-        String[] projection = { MediaStore.Images.Media.DATA };
+        String[] projection = {MediaStore.Images.Media.DATA};
         Cursor cursor = managedQuery(uri, projection, null, null, null);
         int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
         cursor.moveToFirst();
@@ -139,6 +146,10 @@ public class SearchFood extends AppCompatActivity {
         inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
         String path = MediaStore.Images.Media.insertImage(inContext.getContentResolver(), inImage, "Title", null);
         return Uri.parse(path);
+    }
+
+    void closeDialog(){
+        dialog.dismiss();
     }
 
     @Override

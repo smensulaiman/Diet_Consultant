@@ -2,19 +2,15 @@ package com.diu.finalproject.dietplan;
 
 import android.content.Intent;
 import android.graphics.Color;
-import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatSeekBar;
 import android.support.v7.widget.CardView;
 import android.view.View;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.diu.finalproject.dietplan.R;
 import com.github.capur16.digitspeedviewlib.DigitSpeedView;
-import com.github.capur16.digitspeedviewlib.OnSpeedChangeListener;
 import com.shinelw.library.ColorArcProgressBar;
 
 
@@ -31,7 +27,7 @@ public class DashboardActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
-        final DigitSpeedView digitSpeedView = (DigitSpeedView) findViewById(R.id.digit_speed_view);
+        //final DigitSpeedView digitSpeedView = (DigitSpeedView) findViewById(R.id.digit_speed_view);
 
         fmeter = (DigitSpeedView) findViewById(R.id.fmeter);
         imeter = (DigitSpeedView) findViewById(R.id.imeter);
@@ -49,7 +45,6 @@ public class DashboardActivity extends AppCompatActivity {
         underw8 = (CardView) findViewById(R.id.underweight);
         overw8 = (CardView) findViewById(R.id.overweight);
         healthy = (CardView) findViewById(R.id.healthy);
-        obese = (CardView) findViewById(R.id.obese);
 
 
         underw8.setOnClickListener(new View.OnClickListener() {
@@ -84,7 +79,7 @@ public class DashboardActivity extends AppCompatActivity {
 
                 if ((int) calculateBMI(heightM, weightKG) < 60) {
                     bar3.setCurrentValues(calculateBMI(heightM, weightKG));
-                    digitSpeedView.updateSpeed((int) calculateBMI(heightM, weightKG));
+                    //digitSpeedView.updateSpeed((int) calculateBMI(heightM, weightKG));
                 } else {
                     //Toast.makeText(DashboardActivity.this, "MAX LENGTH REACHED", Toast.LENGTH_SHORT).show();
                 }
@@ -111,7 +106,7 @@ public class DashboardActivity extends AppCompatActivity {
                 bmitxt.setText(String.valueOf(calculateBMI(heightM, weightKG)));
                 if ((int) calculateBMI(heightM, weightKG) < 61) {
                     bar3.setCurrentValues(calculateBMI(heightM, weightKG));
-                    digitSpeedView.updateSpeed((int) calculateBMI(heightM, weightKG));
+                    //digitSpeedView.updateSpeed((int) calculateBMI(heightM, weightKG));
                 } else {
                     //Toast.makeText(DashboardActivity.this, "MAX LENGTH REACHED", Toast.LENGTH_SHORT).show();
                 }
@@ -136,7 +131,7 @@ public class DashboardActivity extends AppCompatActivity {
                 bmitxt.setText(String.valueOf(calculateBMI(heightM, weightKG)));
                 if ((int) calculateBMI(heightM, weightKG) < 61) {
                     bar3.setCurrentValues(calculateBMI(heightM, weightKG));
-                    digitSpeedView.updateSpeed((int) calculateBMI(heightM, weightKG));
+                    //digitSpeedView.updateSpeed((int) calculateBMI(heightM, weightKG));
                 } else {
                     //Toast.makeText(DashboardActivity.this, "MAX LENGTH REACHED", Toast.LENGTH_SHORT).show();
                 }
@@ -175,13 +170,11 @@ public class DashboardActivity extends AppCompatActivity {
             moonMoonDisabler('h');
             status.setText("you are Healthy");
             status.setTextColor(Color.parseColor("#439700"));
-        } else if (ibmi > 25 && ibmi <= 29) {
+        } else if (ibmi > 25) {
             moonMoonDisabler('o');
             wgol = (int) (weight - ((weight / ibmi) * 22));
             status.setText("you are overweight\nyou have to decrease " + wgol + " kg");
             status.setTextColor(Color.parseColor("#FF495E"));
-        } else if (ibmi > 29) {
-            moonMoonDisabler('b');
         }
         return bmi;
     }
@@ -193,25 +186,21 @@ public class DashboardActivity extends AppCompatActivity {
                 underw8.setEnabled(true);
                 overw8.setEnabled(false);
                 healthy.setEnabled(false);
-                obese.setEnabled(false);
                 break;
             case 'h':
                 underw8.setEnabled(false);
                 overw8.setEnabled(false);
                 healthy.setEnabled(true);
-                obese.setEnabled(false);
                 break;
             case 'o':
                 underw8.setEnabled(false);
                 overw8.setEnabled(true);
                 healthy.setEnabled(false);
-                obese.setEnabled(false);
                 break;
             case 'b':
                 underw8.setEnabled(false);
                 overw8.setEnabled(true);
                 healthy.setEnabled(false);
-                obese.setEnabled(true);
                 break;
         }
 

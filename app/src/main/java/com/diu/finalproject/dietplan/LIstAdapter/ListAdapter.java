@@ -1,7 +1,6 @@
 package com.diu.finalproject.dietplan.LIstAdapter;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,7 +8,6 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.diu.finalproject.dietplan.R;
-import com.jpardogo.android.flabbylistview.lib.FlabbyLayout;
 
 import java.util.List;
 import java.util.Random;
@@ -51,8 +49,6 @@ public class ListAdapter extends ArrayAdapter<String>{
             holder = (ViewHolder) convertView.getTag();
         }
 
-        int color = Color.argb(255, mRandomizer.nextInt(256), mRandomizer.nextInt(256), mRandomizer.nextInt(256));
-        ((FlabbyLayout)convertView).setFlabbyColor(color);
         holder.text.setText(getItem(position));
         return convertView;
     }
